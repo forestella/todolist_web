@@ -1,17 +1,17 @@
-### Frontend
-bootstrap
-
-### Framework
-springboot jpa
-lobmok
-gradle
-
-### DB
-myBatis 
-h2 in memory
-
 ### 과제
 할일 목록(todo-list) 웹 어플리케이션 구현
+
+### Frontend
+* bootstrap
+
+### Framework
+* springboot jpa
+* lobmok
+* gradle
+
+### DB
+* myBatis 
+* h2 (in memory)
 
 ### 기능
 * 사용자는 텍스트로 된 할일을 추가할 수 있다.
