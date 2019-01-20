@@ -11,12 +11,14 @@ import java.util.Optional;
 public class TodosMainResponseDto {
     private Long id;
     private String todo;
+    private String completeYn;
     private String createdTime;
     private String modifiedTime;
 
     public TodosMainResponseDto(Todos entity){
         id = entity.getId();
         todo = entity.getTodo ();
+        completeYn = entity.getCompleteYn();
         createdTime = toStringDateTime(entity.getCreatedTime());
         modifiedTime = toStringDateTime(entity.getModifiedTime());
     }

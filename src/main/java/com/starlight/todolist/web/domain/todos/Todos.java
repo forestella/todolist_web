@@ -21,8 +21,8 @@ public class Todos extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String todo;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String completeYn = "N";
+    @Column(columnDefinition = "TEXT")
+    private String completeYn;
 
     @Builder
     public Todos(String todo, String completeYn) {

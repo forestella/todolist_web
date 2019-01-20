@@ -13,12 +13,11 @@ public class TodosSaveRequestDto {
 
     private String todo;
     private String completeYn;
-    private Long refId;
 
     @Builder
-    public TodosSaveRequestDto (String todo, String completeYn) {
+    public TodosSaveRequestDto (String todo) {
         this.todo = todo;
-        this.completeYn = completeYn;
+        this.completeYn = "N";
     }
 
     public Todos toEntity(){
