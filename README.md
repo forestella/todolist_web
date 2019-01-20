@@ -1,11 +1,16 @@
 ### 과제
 할일 목록(todo-list) 웹 어플리케이션 구현
 
+### Prerequisites
+* JDK 1.8 이상
+
 ### Frontend
 * bootstrap
+* Handlebar 0.2.15
 
 ### Framework
-* springboot jpa
+* springboot 1.5.10
+* jpa
 * lobmok
 * gradle
 
