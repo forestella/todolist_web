@@ -1,11 +1,15 @@
 package com.starlight.todolist.web.service;
 
+import com.starlight.todolist.dto.posts.PostsMainResponseDto;
 import com.starlight.todolist.dto.posts.PostsSaveRequestDto;
 import com.starlight.todolist.web.domain.posts.PostsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -16,6 +20,14 @@ public class PostsService {
     @Transactional
     public Long save(PostsSaveRequestDto dto) {
         return postsRepository.save(dto.toEntity()).getId();
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsMainResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc()
+                .map(PostsMainResponseDto::new)
+                .collect(Collectors.toList());
+
     }
 
 

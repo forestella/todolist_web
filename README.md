@@ -2,7 +2,7 @@
 할일 목록(todo-list) 웹 어플리케이션 구현
 
 ### Prerequisites
-* JDK 1.8 이상
+* JDK 1.8
 
 ### Frontend
 * bootstrap
