@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/lib/index.css">
+
+
+<body>
+<div class="form-group">
+    <h1>To-Do <small>List</small></h1>
+    <form role="form">
+        <input type="text" class="form-control" placeholder="Your Task" name="task">
+    </form>
+    <button type="button" class="btn btn btn-primary">Add</button>
+</div>
+<div></div>
+<ul class="list-unstyled" id="todo"></ul>
+
+
+<div class="col-md-12">
+    <!-- 목록 출력 영역 -->
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">할일</th>
+            <th scope="col">작성일시</th>
+            <th scope="col">최종수정일시</th>
+            <th scope="col">완료처리</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#each todos}}
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td>{{todo}}</td>
+                <td>{{createdTime}}</td>
+                <td>{{modifiedTime}}</td>
+                <td>{{completeYn}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+<!--부트스트랩 js, jquery 추가-->
+<script src="/js/lib/jquery.min.js"></script>
+<script src="/js/lib/bootstrap.min.js"></script>
+
+<!--custom js 추가-->
+<script src="/js/app/index.js"></script>
+</body>
