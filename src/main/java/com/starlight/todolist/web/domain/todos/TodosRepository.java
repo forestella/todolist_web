@@ -10,4 +10,12 @@ public interface TodosRepository extends JpaRepository<Todos, Long> {
             "FROM Todos p " +
             "ORDER BY p.id DESC")
     Stream<Todos> findAllDesc();
+
+    @Query("SELECT COUNT(p) FROM Todos p")
+    long getTotalCount();
+
+
+
+//    @Query("UPDATE TODOS p SET p.complete_yn = :complete_yn" WHERE p.id = :id);
+//    Integer updateCompleteYn()
 }

@@ -5,21 +5,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
     <!--부트스트랩 css 추가-->
     <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="/css/lib/index.css">
 </head>
 
 <body>
-<!--<div class="form-group">-->
-    <!--<h1>To-Do <small>List</small></h1>-->
-    <!--<form role="form">-->
-        <!--<input id="task" type="text" class="form-control" placeholder="할일을 입력하세요." name="task">-->
-    <!--</form>-->
-    <!--<button id="add_task" type="button" class="btn btn btn-primary">Add</button>-->
-<!--</div>-->
-<!--<div></div>-->
-<!--<ul class="list-unstyled" id="todo"></ul>-->
+
+<div class="form-group">
+    <h1>To-Do <small>List</small></h1>
+    <form role="form">
+        <input id="task" type="text" class="form-control" placeholder="할일을 입력하세요." name="task">
+    </form>
+    <button id="add_task" type="button" class="btn btn btn-primary">Add</button>
+</div>
+<div></div>
+<ul class="list-unstyled" id="todo"></ul>
 
 
 <div class="col-md-12">
@@ -34,8 +36,11 @@
             <th scope="col">완료처리</th>
         </tr>
         </thead>
+        {{log pageNumber}}
+        {{log pageSize}}
+        {{log totalCount}}
         <tbody id="tbody">
-        {{#each todos}}
+        {{#each todos.content}}
             <tr>
                 <th scope="row">{{id}}</th>
                 <td><a id="td_todo" data-toggle="modal" href="#savePostsModal">{{todo}}</a></td>
@@ -46,7 +51,23 @@
         {{/each}}
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
 </div>
+
+
 
 <div class="modal fade" id="savePostsModal" tabindex="-1" role="dialog" aria-labelledby="savePostsModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -116,7 +137,11 @@
 <!--부트스트랩 js, jquery 추가-->
 <script src="/js/lib/jquery.min.js"></script>
 <script src="/js/lib/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"/>
+
 
 <!--custom js 추가-->
 <script src="/js/app/index.js"></script>
+
+
 </body>

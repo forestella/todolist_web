@@ -17,7 +17,7 @@ public class TodosSaveRequestDto {
     @Builder
     public TodosSaveRequestDto (String todo) {
         this.todo = todo;
-        this.completeYn = "N";
+        this.completeYn = completeYn;
     }
 
     public Todos toEntity(){
