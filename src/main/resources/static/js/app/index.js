@@ -21,12 +21,32 @@ var index = {
 
         $.ajax({
             type: 'POST',
-            url: '/todos',
+            url: '/todosInsert',
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
             alert('할일이 등록되었습니다.');
+            location.reload();
+        }).fail(function (error) {
+            alert(error);
+        });
+    },
+    update : function () {
+        var data = {
+            completeYn: $('#completeYn').val(),
+        };
+
+        console.log(data);
+
+        $.ajax({
+            type: 'POST',
+            url: '/todosUpdate',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function() {
+            alert('할일이 수정되었습니다.');
             location.reload();
         }).fail(function (error) {
             alert(error);

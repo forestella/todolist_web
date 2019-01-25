@@ -15,7 +15,6 @@
 * gradle
 
 ### DB
-* myBatis 
 * h2 (in memory)
 
 ### 기능

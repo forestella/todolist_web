@@ -15,7 +15,7 @@ public class TodosSaveRequestDto {
     private String completeYn;
 
     @Builder
-    public TodosSaveRequestDto (String todo) {
+    public TodosSaveRequestDto (String todo, String completeYn) {
         this.todo = todo;
         this.completeYn = completeYn;
     }

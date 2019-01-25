@@ -19,9 +19,16 @@ public class WebRestController {
         return "Hello World";
     }
 
-    @PostMapping("/todos")
+    @PostMapping("/todosInsert")
     public Long saveTodos(@RequestBody TodosSaveRequestDto dto){
         return todosService.save(dto);
     }
+
+//    @PostMapping("/todosUpdate")
+//    public Long updateTodos(@RequestBody TodosSaveRequestDto dto){
+//        return todosService.update(dto);
+//    }
+
+    //수정, 삭제 추가 해야함
 
 }

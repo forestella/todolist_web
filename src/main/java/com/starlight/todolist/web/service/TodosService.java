@@ -17,10 +17,19 @@ public class TodosService {
 
     private TodosRepository todosRepository;
 
+    //추가
     @Transactional
     public Long save(TodosSaveRequestDto dto) {
         return todosRepository.save(dto.toEntity()).getId();
     }
+
+    //수정
+//    @Transactional
+////    public Long update(TodosUpdateRequestDto dto) {
+////        return todosRepository.update(dto.toEntity()).getId();
+////    }
+
+    //삭제
 
     //조회
     @Transactional(readOnly = true)

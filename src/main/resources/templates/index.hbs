@@ -13,12 +13,43 @@
 
 <body>
 
+<!-- Modal -->
+<div class="modal fade" id="saveTodosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary">수정하기</button>
+                <button type="button" class="btn btn-success">참조하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="form-group">
     <h1>To-Do <small>List</small></h1>
     <form role="form">
         <input id="task" type="text" class="form-control" placeholder="할일을 입력하세요." name="task">
     </form>
     <button id="add_task" type="button" class="btn btn btn-primary">Add</button>
+
 </div>
 <div></div>
 <ul class="list-unstyled" id="todo"></ul>
@@ -36,14 +67,11 @@
             <th scope="col">완료처리</th>
         </tr>
         </thead>
-        {{log pageNumber}}
-        {{log pageSize}}
-        {{log totalCount}}
         <tbody id="tbody">
         {{#each todos.content}}
             <tr>
                 <th scope="row">{{id}}</th>
-                <td><a id="td_todo" data-toggle="modal" href="#savePostsModal">{{todo}}</a></td>
+                <td><a id="td_todo" href="#" role="button" data-toggle="modal" data-target="#saveTodosModal">{{todo}}</a></td>
                 <td>{{createdTime}}</td>
                 <td>{{modifiedTime}}</td>
                 <td>{{completeYn}}</td>
@@ -67,36 +95,6 @@
 
 </div>
 
-
-
-<div class="modal fade" id="savePostsModal" tabindex="-1" role="dialog" aria-labelledby="savePostsModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- Modal 영역 -->
@@ -137,7 +135,6 @@
 <!--부트스트랩 js, jquery 추가-->
 <script src="/js/lib/jquery.min.js"></script>
 <script src="/js/lib/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"/>
 
 
 <!--custom js 추가-->
