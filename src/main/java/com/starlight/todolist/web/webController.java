@@ -27,12 +27,14 @@ public class webController {
     @GetMapping("/list")
     public String list(Model model,
                        @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC, size = 4) Pageable pageable) {
+        model.addAttribute ("todosAll", todosService.findAllDesc());
         model.addAttribute ("todos", todosRepository.findAll(pageable));
         model.addAttribute("pageNumber", pageable.getPageNumber());
         model.addAttribute("pageSize", pageable.getPageSize());
         model.addAttribute("totalCount", todosRepository.getTotalCount());
         return "index";
     }
+
 
 
 //    @GetMapping("/todos/{id}")

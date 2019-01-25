@@ -23,21 +23,26 @@ public class TodosService {
         return todosRepository.save(dto.toEntity()).getId();
     }
 
-    //수정
-//    @Transactional
-////    public Long update(TodosUpdateRequestDto dto) {
-////        return todosRepository.update(dto.toEntity()).getId();
-////    }
 
-    //삭제
-
-    //조회
     @Transactional(readOnly = true)
     public List<TodosMainResponseDto> findAllDesc() {
         return todosRepository.findAllDesc()
                 .map(TodosMainResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    //조회 페이징
+
+
+    //수정
+//    @Transactional
+////    public Long update(TodosUpdateRequestDto dto) {
+////        return todosRepository.findAll(pageable);
+////    }
+
+    //삭제
+
+    //조회
 
 
 }
