@@ -14,6 +14,7 @@ public class TodosSaveRequestDto {
     private Long id;
     private String todo;
     private String completeYn;
+    private String modifiedTime;
 
     @Builder
     public TodosSaveRequestDto (Long id, String todo, String completeYn) {
@@ -21,6 +22,7 @@ public class TodosSaveRequestDto {
         this.todo = todo;
         this.completeYn = completeYn;
     }
+
 
     public Todos toEntity(){
         return Todos.builder()

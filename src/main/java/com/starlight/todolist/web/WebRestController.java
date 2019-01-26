@@ -21,7 +21,12 @@ public class WebRestController {
 
     @PostMapping("/todosUpdate/{id}")
     public Todos updateTodos(@PathVariable Long id, @RequestBody TodosSaveRequestDto dto){
-        return todosService.update(id, dto);
+        return todosService.updateTodo(id, dto);
+    }
+
+    @PostMapping("/todosComplete/{id}")
+    public Todos updateComplete(@PathVariable Long id, @RequestBody TodosSaveRequestDto dto){
+        return todosService.updateCompleteYn(id, dto);
     }
 
     @PostMapping("/todosDelete/{id}")
@@ -29,6 +34,5 @@ public class WebRestController {
         return todosService.delete(id, dto);
     }
 
-    //수정, 삭제 추가 해야함
 
 }

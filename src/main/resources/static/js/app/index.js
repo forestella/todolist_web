@@ -38,20 +38,20 @@ $(".td_task").click(function () {
 
             //할일 수정
             $('#update_task').click(function () {
-                alert("업데이트 클릭")
+                //alert("업데이트 클릭")
                 //참조 값이 있는 경우 참조 테이블에 추가
                 _this.update();
             });
 
             //할일 완료
             $('#complete_task').click(function () {
-                alert("완료 클릭")
+                //alert("완료 클릭")
                 _this.complete();
             });
 
             //할일 삭제[
             $('#delete_task').click(function () {
-                alert("삭제 클릭")
+                //alert("삭제 클릭")
                 _this.delete();
             });
         },
@@ -96,6 +96,27 @@ $(".td_task").click(function () {
                 alert(error);
             });
         },
+        complete: function () {
+            var data = {
+                id: $('#_todo_id').val(),
+                completeYn: "Y",
+            };
+
+            console.log(data);
+
+            $.ajax({
+                type: 'POST',
+                url: '/todosComplete/'+data.id,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function () {
+                alert('할일이 완료 처리되었습니다.');
+                location.reload();
+            }).fail(function (error) {
+                alert(error);
+            });
+        },
         delete: function () {
             var data = {
                 id: $('#_todo_id').val(),
@@ -116,7 +137,6 @@ $(".td_task").click(function () {
                 alert(error);
             });
         }
-        
 
     };
 

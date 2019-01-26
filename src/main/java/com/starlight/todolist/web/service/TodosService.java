@@ -24,7 +24,17 @@ public class TodosService {
         return todosRepository.save(dto.toEntity()).getId();
     }
 
-    //조회
+    //단건 조회
+    @Transactional(readOnly = true)
+    public Todos getTodo(Long id){
+        Todos todos = todosRepository.findOne(id);
+        if (todos == null) {
+
+        }
+        return todos;
+    }
+
+    //리스트 조회
     @Transactional(readOnly = true)
     public List<TodosMainResponseDto> findAllDesc() {
         return todosRepository.findAllDesc()
@@ -32,18 +42,26 @@ public class TodosService {
                 .collect(Collectors.toList());
     }
 
-    //수정
+    //할일 수정
     @Transactional
-    public Todos update(Long id, TodosSaveRequestDto dto) {
-        Todos todos = todosRepository.findOne(id);
-        todos.update(dto);
+    public Todos updateTodo(Long id, TodosSaveRequestDto dto) {
+        Todos todos = getTodo(id);
+        todos.setTodo(dto.getTodo());
+        return todos;
+    }
+
+    //완료 처리
+    @Transactional
+    public Todos updateCompleteYn(Long id, TodosSaveRequestDto dto) {
+        Todos todos = getTodo(id);
+        todos.setCompleteYn(dto.getCompleteYn());
         return todos;
     }
 
     //삭제
     @Transactional
     public Todos delete(Long id, TodosSaveRequestDto dto) {
-        Todos todos = todosRepository.findOne(id);
+        Todos todos = getTodo(id);
         if(todos != null){
             todosRepository.delete(id);
         }

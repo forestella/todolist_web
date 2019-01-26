@@ -2,16 +2,14 @@ package com.starlight.todolist.web.domain.todos;
 
 import com.starlight.todolist.dto.todos.TodosSaveRequestDto;
 import com.starlight.todolist.web.domain.BaseTimeEntity;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 @Entity
 public class Todos extends BaseTimeEntity {
 
@@ -24,6 +22,7 @@ public class Todos extends BaseTimeEntity {
 
     @Column
     private String completeYn;
+
 
     @Builder
     public Todos(String todo, String completeYn) {
