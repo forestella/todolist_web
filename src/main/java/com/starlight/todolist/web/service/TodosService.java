@@ -2,11 +2,12 @@ package com.starlight.todolist.web.service;
 
 import com.starlight.todolist.dto.todos.TodosMainResponseDto;
 import com.starlight.todolist.dto.todos.TodosSaveRequestDto;
+import com.starlight.todolist.web.domain.todos.Todos;
 import com.starlight.todolist.web.domain.todos.TodosRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +24,7 @@ public class TodosService {
         return todosRepository.save(dto.toEntity()).getId();
     }
 
-
+    //조회
     @Transactional(readOnly = true)
     public List<TodosMainResponseDto> findAllDesc() {
         return todosRepository.findAllDesc()
@@ -32,14 +33,24 @@ public class TodosService {
     }
 
     //수정
-//    @Transactional
-//    public Long update(TodosUpdateRequestDto dto) {
-//        return todosRepository.findAll(pageable);
-//    }
+    @Transactional
+    public Todos update(Long id, TodosSaveRequestDto dto) {
+        Todos todos = todosRepository.findOne(id);
+        todos.update(dto);
+        return todos;
+    }
 
     //삭제
+    @Transactional
+    public Todos delete(Long id, TodosSaveRequestDto dto) {
+        Todos todos = todosRepository.findOne(id);
+        if(todos != null){
+            todosRepository.delete(id);
+        }
+        return todos;
+    }
 
-    //조회
+
 
 
 }

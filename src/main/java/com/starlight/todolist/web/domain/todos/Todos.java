@@ -1,5 +1,6 @@
 package com.starlight.todolist.web.domain.todos;
 
+import com.starlight.todolist.dto.todos.TodosSaveRequestDto;
 import com.starlight.todolist.web.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -28,6 +29,11 @@ public class Todos extends BaseTimeEntity {
     public Todos(String todo, String completeYn) {
         this.todo = todo;
         this.completeYn = completeYn;
+    }
+
+    public void update (TodosSaveRequestDto dto) {
+        this.todo = dto.getTodo();
+        this.completeYn = dto.getCompleteYn();
     }
 
 

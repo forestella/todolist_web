@@ -29,6 +29,7 @@
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">할일</label>
                         <input type="text" class="form-control" id="todo_name" value="할일을 입력해 주세요.">
+                        <input type="hidden" id="_todo_id" value="">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -45,7 +46,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                 <button id="update_task" type="button" class="btn btn-primary">수정하기</button>
-                <button id="cplt_task" type="button" class="btn btn-danger">완료하기</button>
+                <button id="complete_task" type="button" class="btn btn-success">완료하기</button>
+                <button id="delete_task" type="button" class="btn btn-danger">삭제하기</button>
             </div>
         </div>
     </div>

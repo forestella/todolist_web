@@ -19,6 +19,7 @@ $(".td_task").click(function () {
     var task_id = checkBtn[0].id;
     var task_name = checkBtn[0].text;
 
+    $("#_todo_id").val(task_id);
     $("#todo_name").val(task_name);
 
     //alert(checkBtn);
@@ -47,6 +48,12 @@ $(".td_task").click(function () {
                 alert("완료 클릭")
                 _this.complete();
             });
+
+            //할일 삭제[
+            $('#delete_task').click(function () {
+                alert("삭제 클릭")
+                _this.delete();
+            });
         },
         save: function () {
             var data = {
@@ -70,15 +77,15 @@ $(".td_task").click(function () {
         },
         update: function () {
             var data = {
-                todo: $('#task').val(),
-                completeYn: "Y",
+                id: $('#_todo_id').val(),
+                todo: $('#todo_name').val(),
             };
 
             console.log(data);
 
             $.ajax({
                 type: 'POST',
-                url: '/todosUpdate',
+                url: '/todosUpdate/'+data.id,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
@@ -88,7 +95,28 @@ $(".td_task").click(function () {
             }).fail(function (error) {
                 alert(error);
             });
+        },
+        delete: function () {
+            var data = {
+                id: $('#_todo_id').val(),
+            };
+
+            console.log(data);
+
+            $.ajax({
+                type: 'POST',
+                url: '/todosDelete/'+data.id,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function () {
+                alert('할일이 삭제되었습니다.');
+                location.reload();
+            }).fail(function (error) {
+                alert(error);
+            });
         }
+        
 
     };
 

@@ -11,11 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TodosSaveRequestDto {
 
+    private Long id;
     private String todo;
     private String completeYn;
 
     @Builder
-    public TodosSaveRequestDto (String todo, String completeYn) {
+    public TodosSaveRequestDto (Long id, String todo, String completeYn) {
+        this.id = id;
         this.todo = todo;
         this.completeYn = completeYn;
     }
@@ -26,4 +28,5 @@ public class TodosSaveRequestDto {
                 .completeYn(completeYn)
                 .build();
     }
+
 }

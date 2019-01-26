@@ -16,6 +16,4 @@ public interface TodosRepository extends JpaRepository<Todos, Long> {
     long getTotalCount();
 
 
-//    @Query("UPDATE TODOS p SET p.complete_yn = :complete_yn WHERE p.id = :id");
-//    Stream<Todos>  update();
 }
