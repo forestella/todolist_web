@@ -14,10 +14,6 @@ public class WebRestController {
 
     private TodosService todosService;
 
-    @GetMapping("/hello")
-    public String Hello() {
-        return "Hello World";
-    }
 
     @PostMapping("/todosInsert")
     public Long saveTodos(@RequestBody TodosSaveRequestDto dto){

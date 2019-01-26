@@ -31,14 +31,11 @@ public class TodosService {
                 .collect(Collectors.toList());
     }
 
-    //조회 페이징
-
-
     //수정
 //    @Transactional
-////    public Long update(TodosUpdateRequestDto dto) {
-////        return todosRepository.findAll(pageable);
-////    }
+//    public Long update(TodosUpdateRequestDto dto) {
+//        return todosRepository.findAll(pageable);
+//    }
 
     //삭제
 

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>To-do List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,24 +9,26 @@
     <!--부트스트랩 css 추가-->
     <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="/css/lib/index.css">
+
+
 </head>
 
 <body>
-
+<!--<script id="entry-template" type="text/x-handlebars-template">-->
 <!-- Modal -->
-<div class="modal fade" id="saveTodosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="updateTodosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">내용</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <label for="recipient-name" class="col-form-label">할일</label>
+                        <input type="text" class="form-control" id="todo_name" value="할일을 입력해 주세요.">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -42,8 +44,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary">수정하기</button>
-                <button type="button" class="btn btn-danger">완료하기</button>
+                <button id="update_task" type="button" class="btn btn-primary">수정하기</button>
+                <button id="cplt_task" type="button" class="btn btn-danger">완료하기</button>
             </div>
         </div>
     </div>
@@ -76,9 +78,10 @@
         </thead>
         <tbody id="tbody">
         {{#each todos.content}}
-            <tr>
+            <tr id="task_{{id}}">
                 <th scope="row">{{id}}</th>
-                <td><a id="td_todo" href="#" role="button" data-toggle="modal" data-target="#saveTodosModal">{{todo}}</a></td>
+                <!--<td><a id="td_todo" href="#" data-toggle="modal" data-target="#updateTodosModal">{{todo}}</a></td>-->
+                <td><a id="{{id}}" class="td_task" href="#" data-toggle="modal" data-target="#updateTodosModal">{{todo}}</a></td>
                 <td>{{createdTime}}</td>
                 <td>{{modifiedTime}}</td>
                 <td>{{completeYn}}</td>

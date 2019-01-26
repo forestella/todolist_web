@@ -31,7 +31,7 @@ public class webController {
         model.addAttribute ("todos", todosRepository.findAll(pageable));
         model.addAttribute("pageNumber", pageable.getPageNumber());
         model.addAttribute("pageSize", pageable.getPageSize());
-        model.addAttribute("totalCount", todosRepository.getTotalCount());
+        //model.addAttribute("totalCount", todosRepository.getTotalCount());
         return "index";
     }
 
