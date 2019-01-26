@@ -1,5 +1,6 @@
 package com.starlight.todolist.web;
 
+import com.starlight.todolist.dto.todos.TodosMainResponseDto;
 import com.starlight.todolist.dto.todos.TodosSaveRequestDto;
 import com.starlight.todolist.web.domain.todos.Todos;
 import com.starlight.todolist.web.service.TodosService;
@@ -32,6 +33,11 @@ public class WebRestController {
     @PostMapping("/todosDelete/{id}")
     public Todos deleteTodos(@PathVariable Long id, @RequestBody TodosSaveRequestDto dto){
         return todosService.delete(id, dto);
+    }
+
+    @GetMapping("/todosRead/{id}")
+    public Todos readTodos(@PathVariable Long id){
+        return todosService.getTodo(id);
     }
 
 

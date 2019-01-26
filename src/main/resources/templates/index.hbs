@@ -83,7 +83,7 @@
             <tr id="task_{{id}}">
                 <th scope="row">{{id}}</th>
                 <!--<td><a id="td_todo" href="#" data-toggle="modal" data-target="#updateTodosModal">{{todo}}</a></td>-->
-                <td><a id="{{id}}" class="td_task" href="#" data-toggle="modal" data-target="#updateTodosModal">{{todo}}</a></td>
+                <td><a id="{{id}}" class="td_task" href="#" data-toggle="modal" data-target="#updateTodosModal">{{todo}} {{#each refTodos}}@{{id}} {{/each}}</a></td>
                 <td>{{createdTime}}</td>
                 <td>{{modifiedTime}}</td>
                 <td>{{completeYn}}</td>

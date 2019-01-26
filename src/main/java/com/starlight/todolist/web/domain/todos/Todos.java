@@ -5,6 +5,7 @@ import com.starlight.todolist.web.domain.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,6 +23,12 @@ public class Todos extends BaseTimeEntity {
 
     @Column
     private String completeYn;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "ref_todos",
+            joinColumns = @JoinColumn(name = "todo_id"),
+            inverseJoinColumns = @JoinColumn(name = "ref_id"))
+    private List<Todos> refTodos;
 
 
     @Builder

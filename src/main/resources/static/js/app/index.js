@@ -136,6 +136,26 @@ $(".td_task").click(function () {
             }).fail(function (error) {
                 alert(error);
             });
+        },
+        read: function () {
+            var data = {
+                id: $('#_todo_id').val(),
+            };
+
+            console.log(data);
+
+            $.ajax({
+                type: 'POST',
+                url: '/todosRead/'+data.id,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function () {
+                alert('할일이 조회되었습니다.');
+                location.reload();
+            }).fail(function (error) {
+                alert(error);
+            });
         }
 
     };
