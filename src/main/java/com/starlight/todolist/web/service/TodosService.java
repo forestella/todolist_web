@@ -63,6 +63,13 @@ public class TodosService {
     @Transactional
     public Todos updateCompleteYn(Long id, TodosSaveRequestDto dto) {
         Todos todos = getTodo(id);
+        if(todos != null) {
+            if(todos.getOriginTodos().stream().anyMatch(t -> t.getCompleteYn().equals("N"))){
+                throw new RuntimeException("완료하지 않은 업무가 존재 합니다.");
+            }else if(todos.getCompleteYn().equals("Y")){
+                throw new RuntimeException("이미 완료된 업무 입니다.");
+            }
+        }
         todos.setCompleteYn(dto.getCompleteYn());
         return todos;
     }

@@ -16,18 +16,14 @@ public class TodosSaveRequestDto {
     private Long id;
     private String todo;
     private String completeYn;
-    private List<Todos> refTodos;
-    private List<Todos> originTodos;
     private Long ref_id;
     private String modifiedTime;
 
     @Builder
-    public TodosSaveRequestDto (Long id, String todo, String completeYn, List<Todos> refTodos, List<Todos> originTodos, Long ref_id) {
+    public TodosSaveRequestDto (Long id, String todo, String completeYn, Long ref_id) {
         this.id = id;
         this.todo = todo;
         this.completeYn = completeYn;
-        this.refTodos = refTodos;
-        this.originTodos = originTodos;
         this.ref_id = ref_id;
     }
 

@@ -114,7 +114,8 @@ $(".td_task").click(function () {
                 alert('할일이 완료 처리되었습니다.');
                 location.reload();
             }).fail(function (error) {
-                alert(error);
+                alert("["+error.responseJSON.status+"] "+error.responseJSON.message);
+                location.reload();
             });
         },
         read: function () {
@@ -134,7 +135,7 @@ $(".td_task").click(function () {
                 alert('할일이 조회되었습니다.');
                 location.reload();
             }).fail(function (error) {
-                alert(error);
+                alert("["+error.responseJSON.status+"] "+error.responseJSON.message);
             });
         },
         insert_ref: function () {
@@ -155,7 +156,7 @@ $(".td_task").click(function () {
                 alert('참조가 추가되었습니다.');
                 location.reload();
             }).fail(function (error) {
-                alert(error);
+                alert("["+error.responseJSON.status+"] "+error.responseJSON.message);
             });
         },
 
