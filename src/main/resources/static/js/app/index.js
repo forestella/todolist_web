@@ -17,7 +17,7 @@ $(".td_task").click(function () {
     var checkBtn = $(this);
 
     var task_id = checkBtn[0].id;
-    var task_name = checkBtn[0].text;
+    var task_name = checkBtn[0].attributes[5].value;
 
     $("#_todo_id").val(task_id);
     $("#todo_name").val(task_name);
@@ -38,21 +38,21 @@ $(".td_task").click(function () {
 
             //할일 수정
             $('#update_task').click(function () {
-                //alert("업데이트 클릭")
+                //alert("업데이트 클릭");
                 //참조 값이 있는 경우 참조 테이블에 추가
                 _this.update();
             });
 
             //할일 완료
             $('#complete_task').click(function () {
-                //alert("완료 클릭")
+                //alert("완료 클릭");
                 _this.complete();
             });
 
-            //할일 삭제[
-            $('#delete_task').click(function () {
-                //alert("삭제 클릭")
-                _this.delete();
+            //참조 추가
+            $('#insert_ref_task').click(function () {
+                //alert("참조 클릭");
+                _this.insert_ref();
             });
         },
         save: function () {
@@ -117,26 +117,6 @@ $(".td_task").click(function () {
                 alert(error);
             });
         },
-        delete: function () {
-            var data = {
-                id: $('#_todo_id').val(),
-            };
-
-            console.log(data);
-
-            $.ajax({
-                type: 'POST',
-                url: '/todosDelete/'+data.id,
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(data)
-            }).done(function () {
-                alert('할일이 삭제되었습니다.');
-                location.reload();
-            }).fail(function (error) {
-                alert(error);
-            });
-        },
         read: function () {
             var data = {
                 id: $('#_todo_id').val(),
@@ -156,7 +136,28 @@ $(".td_task").click(function () {
             }).fail(function (error) {
                 alert(error);
             });
-        }
+        },
+        insert_ref: function () {
+            var data = {
+                id: $('#_todo_id').val(),
+                ref_id: $('#inputGroupSelect01 option:selected').val(),
+            };
+
+            console.log(data);
+
+            $.ajax({
+                type: 'POST',
+                url: '/refTodosInsert/'+data.id,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function () {
+                alert('참조가 추가되었습니다.');
+                location.reload();
+            }).fail(function (error) {
+                alert(error);
+            });
+        },
 
     };
 

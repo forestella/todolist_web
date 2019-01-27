@@ -5,10 +5,13 @@ import com.starlight.todolist.dto.todos.TodosSaveRequestDto;
 import com.starlight.todolist.web.domain.todos.Todos;
 import com.starlight.todolist.web.domain.todos.TodosRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +45,12 @@ public class TodosService {
                 .collect(Collectors.toList());
     }
 
+    //리스트 조회2
+    @Transactional(readOnly = true)
+    public Page<Todos> findAll(Pageable pageable) {
+        return todosRepository.findAll(pageable);
+    }
+
     //할일 수정
     @Transactional
     public Todos updateTodo(Long id, TodosSaveRequestDto dto) {
@@ -68,8 +77,14 @@ public class TodosService {
         return todos;
     }
 
-
-
+    //참조 추가
+    @Transactional
+    public Todos saveRef(Long id, TodosSaveRequestDto dto) {
+        Todos todos = getTodo(id);
+        Todos refTodos = getTodo(dto.getRef_id());
+        todos.updateRefTodo(refTodos);
+        return todos;
+    }
 
 
 }

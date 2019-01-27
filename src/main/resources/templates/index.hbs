@@ -33,7 +33,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">참조할일</label>
+                            <button id="insert_ref_task" type="button" class="btn btn-warning">참조추가</button>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
                             <option selected>--선택--</option>
@@ -47,7 +47,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                 <button id="update_task" type="button" class="btn btn-primary">수정하기</button>
                 <button id="complete_task" type="button" class="btn btn-success">완료하기</button>
-                <button id="delete_task" type="button" class="btn btn-danger">삭제하기</button>
+                <!--<button id="delete_task" type="button" class="btn btn-danger">삭제하기</button>-->
             </div>
         </div>
     </div>
@@ -83,7 +83,7 @@
             <tr id="task_{{id}}">
                 <th scope="row">{{id}}</th>
                 <!--<td><a id="td_todo" href="#" data-toggle="modal" data-target="#updateTodosModal">{{todo}}</a></td>-->
-                <td><a id="{{id}}" class="td_task" href="#" data-toggle="modal" data-target="#updateTodosModal">{{todo}} {{#each refTodos}}@{{id}} {{/each}}</a></td>
+                <td><a id="{{id}}" class="td_task" href="#" data-toggle="modal" data-target="#updateTodosModal" value="{{todo}}">{{todo}} {{#each refTodos}}@{{id}} {{/each}}</a></td>
                 <td>{{createdTime}}</td>
                 <td>{{modifiedTime}}</td>
                 <td>{{completeYn}}</td>

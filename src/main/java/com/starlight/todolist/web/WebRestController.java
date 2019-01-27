@@ -35,6 +35,12 @@ public class WebRestController {
         return todosService.delete(id, dto);
     }
 
+    @PostMapping("/refTodosInsert/{id}")
+    public Todos saveRefTodos(@PathVariable Long id, @RequestBody TodosSaveRequestDto dto){
+        return todosService.saveRef(id, dto);
+        //return null;
+    }
+
     @GetMapping("/todosRead/{id}")
     public Todos readTodos(@PathVariable Long id){
         return todosService.getTodo(id);

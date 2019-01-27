@@ -1,10 +1,12 @@
 package com.starlight.todolist.web.domain.todos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.starlight.todolist.dto.todos.TodosSaveRequestDto;
 import com.starlight.todolist.web.domain.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,11 +26,16 @@ public class Todos extends BaseTimeEntity {
     @Column
     private String completeYn;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "refTodos")
+    @JsonIgnore
+    private List<Todos> originTodos = new ArrayList<>();
+
+    @ManyToMany
     @JoinTable(name = "ref_todos",
             joinColumns = @JoinColumn(name = "todo_id"),
             inverseJoinColumns = @JoinColumn(name = "ref_id"))
-    private List<Todos> refTodos;
+    private List<Todos> refTodos = new ArrayList<>();
+
 
 
     @Builder
@@ -40,6 +47,10 @@ public class Todos extends BaseTimeEntity {
     public void update (TodosSaveRequestDto dto) {
         this.todo = dto.getTodo();
         this.completeYn = dto.getCompleteYn();
+    }
+
+    public void updateRefTodo (Todos todos){
+        refTodos.add(todos);
     }
 
 

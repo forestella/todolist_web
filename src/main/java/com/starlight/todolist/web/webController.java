@@ -28,7 +28,8 @@ public class webController {
     public String list(Model model,
                        @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC, size = 4) Pageable pageable) {
         model.addAttribute ("todosAll", todosService.findAllDesc());
-        model.addAttribute ("todos", todosRepository.findAll(pageable));
+        //model.addAttribute ("todos", todosRepository.findAll(pageable));
+        model.addAttribute ("todos", todosService.findAll(pageable));
         model.addAttribute("pageNumber", pageable.getPageNumber());
         model.addAttribute("pageSize", pageable.getPageSize());
         //model.addAttribute("totalCount", todosRepository.getTotalCount());
@@ -37,13 +38,4 @@ public class webController {
 
 
 
-//    @GetMapping("/todos/{id}")
-//    public Student retrieveStudent(@PathVariable long id) {
-//        Optional<Student> student = studentRepository.findById(id);
-//
-//        if (!student.isPresent())
-//            throw new StudentNotFoundException("id-" + id);
-//
-//        return student.get();
-//    }
 }
