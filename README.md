@@ -1,22 +1,22 @@
 ### 과제
-할일 목록(todo-list) 웹 어플리케이션 구현
+* 할일 목록(todo-list) 웹 어플리케이션 구현
 
 ### 실행방법
-git clone https://github.com/seonguklim/todolist_web.git
+* git clone https://github.com/seonguklim/todolist_web.git
 
-http://localhost:8080/list로 서비스 확인
-http://localhost:8080/h2-console 에서 DB 확인
-JDBC URL은 jdbc:h2:mem:testdb로 접속
+* http://localhost:8080/list로 서비스 확인
+* http://localhost:8080/h2-console 에서 DB 확인
+* JDBC URL은 jdbc:h2:mem:testdb로 접속
 
 ### 구현방법
-spring boot와 jpa repository를 활용하여
+* spring boot와 jpa repository를 활용하여
 기본적인 CRUD를 구현하였다.
 
-FrontEnd는
+* FrontEnd는
 정적템플릿 도구인
 handlebars로 활용하였음.
 
-참조가 걸리는 부분은
+* 참조가 걸리는 부분은
 기존 테이블(TODOS)과
 참조 테이블(REF_TODOS)을 하나 추가 하여
 manytomany 관계를 설정하였다.
